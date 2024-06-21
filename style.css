@@ -1,0 +1,32 @@
+body{
+    background-image: url(https://t4.ftcdn.net/jpg/06/91/05/19/360_F_691051949_HjaiJ9rxVuFCLVJyyhem1HrC2AfALdLd.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: sans-serif;
+}
+.pcard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.card{
+    width:500px;
+    background-color: azure;
+    text-align: center;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px rgb(230, 229, 228);
+}
+#button{
+    padding: 4px;
+    border-radius: 4px;
+    color:white;
+    background-color: black;
+}
+.moodoption{
+    margin:8px;
+}
+.card.scaled{
+    transform: scale(1.2);
+}
