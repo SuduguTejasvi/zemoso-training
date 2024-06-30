@@ -1,88 +1,112 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Kovai Kulira Lyrics</title>
-        <meta name="description" content="Listen to Kovai Kulira Song Online, Kovai Kulira Song MP3 by Anthony Daasan and Siddhu Kumar, Download Kovai Kulira Song from Joe, Stream Bollywood Music Online, Hindi Music Download">
-    </head>
-    <body>
-        <header>
-            <span><img src="../images/icon.png" height="15px" alt="Icon"></span>
-            <h2>Jiosavan</h2>
-            <nav>
-                <ul>
-                    <li ><a href="#home">Home</a></li>
-                    <li ><a href="#lyrics">Lyrics</a></li>
-                    <li><a href="#contact">Lyrics</a></li>
-                </ul>
-            </nav>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZemosoRestaurant</title>
+    <link href="./style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <header class="heading">
+            <h1>Restaurant Billing System</h1>
         </header>
-        <section id="home">
-            <img src="../images/photo.jpg" height="200px">
-            <h2>Kovai Kulira</h2>
-            <h4>Joe  by Anthony Daasan, Siddhu Kumar</h4>
-            <h6>Song  ·  303,059 Plays</h6>
-        </section>
-        <main id="lyrics">
-            <h2>Kovai Kulira Lyrics</h2>
-            <table border="1" style="width: 30%;">
-                <thead >
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Contents</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Album/Movie</th>
-                        <td>Joe</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Singers</th>
-                        <td>Siddhu Kumar, Vineeth Srinivasan</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Music Composer</th>
-                        <td>Siddhu Kumar</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Language</th>
-                        <td>Tamil</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p>
-                Male : Kovai kulira konjum kuyila<br>
-                Kodai puyala kaatrin magala<br>
-                Mazhaiyil veesum mannin manama<br>
-                Manasoram urasitaale<br><br>
-
-                Male : Aadum mayil pol azhaga<br>
-                Ava alum bothum avalo azhaga<br>
-                Kaatril varum kaanal thugala<br>
-                Adhil kaadhal kadhai polae ivala<br><br>
-
-                Male : Paarthavudanae padapadakkuthu<br>
-                Pazhagi pakka manam thudikkuthu<br>
-                Nerungi nadakka nadu nadunguthu<br>
-                Neraa pesa manam thavikkirathae<br><br>
-
-                Male : Hoo oo ooo ooo
-            </p>
-        </main>
-        <video src="./images/Kovai Kulira Video Song _ Joe _ Rio Raj _ Hariharan Ram.S _ Siddhu Kumar _ Dr.D.Arulanandhu.mp3" height="200px" controls>video not supported</video>
-        <footer id="contact">
-            <form method="post" action="" >
-                <h4>Contact Us</h4>
-                <label for="name">Name</label>
-                <input id="name" name="name" type="text" minlength="3" maxlength="12" required><br><br>
-                <label for="mobile">Phone no</label>
-                <input id="mobile" name="mobile" type="text" pattern="^[6-9]\d{9}$" ><br><br>
-                <label for="email">Email</label>
-                <input id="email" name="email" type="text" pattern="^[A-Za-z0-9_]+@[a-z]+\.[a-z]{2,}$" required><br><br>
-                <label for="address">Address</label>
-                <textarea id="address" rows="4" cols="20" name="address"></textarea><br><br>
-                <input type="submit" value="submit">
-            </form>
-        </footer>
-    </body>
+        <div class="menu">
+            <div class="table-section">
+                <h3>Tables</h3>
+                <input type="search" id="tableSearch" placeholder="Search tables...">
+                <span><button class="btn btn-primary" id="addTablebtn">+</button></span>
+                <div id="table-section"></div>
+            </div>
+            <div class="menu-section">
+                <h3>Menu</h3>
+                <input type="search" id="menuSearch" placeholder="Search menu...">
+                <span><button class="btn btn-primary" id="addmenubtn">+</button></span>
+                <div id="card-container"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="billpopup">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h5 class="modal-title">Bill Details</h5>
+            <div class="modal-body" id="bill-details">
+                <!-- Content will be dynamically added here -->
+            </div>
+            <div class="modal-footer">
+                <button class="close-button" id="closeButton">Close</button>
+                <button id="generateBillButton" class="generate-button">Generate Bill</button>
+            </div>
+        </div>
+    </div>
+    <div id="generateBillModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" id="closeGenerateModal">&times;</span>
+                <h2>Bill Details</h2>
+            </div>
+            <div class="modal-body" id="generateBillContent">
+                <!-- Bill details will be dynamically generated here -->
+            </div>
+            <div class="modal-footer">
+                <button id="closeGenerateButton" class="btn btn-secondary">Close</button>
+            </div>
+        </div>
+    </div>
+    <div id="addTable" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" id="closeaddTable">&times;</span>
+                <h2>Add Table Items</h2>
+            </div>
+            <div class="modal-body" id="addtableContent">
+                <!-- Bill details will be dynamically generated here -->
+                <form id="addTableForm">
+                    <label for="tableName">Table Name:</label>
+                    <input type="text" id="tableName" name="tableName" required><br><br>
+                    <button type="submit" class="btn-primary" id="addTableSubmit">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="closeAddTablebtn" class="btn btn-secondary">Close</button>
+            </div>
+        </div>
+    </div>
+    <div id="addMenu" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" id="closeaddMenu">&times;</span>
+                <h2>Add Menu Items</h2>
+            </div>
+            <div class="modal-body" id="addmenuContent">
+                <!-- Bill details will be dynamically generated here -->
+                 <!-- <h1>Form</h1> -->
+                <form id="addmenuForm">
+                    <label for="itemName">Item Name:</label>
+                    <input type="text" id="itemName" name="itemName" required><br><br>
+                    <label for="itemPrice">Item Price:</label>
+                    <input type="number" id="itemPrice" name="itemPrice" required><br><br>
+                    <label for="itemCategory">Item Category:</label>
+                    <select id="itemCategory" name="itemCategory" required>
+                        <!-- <option value="-1">Select a category</option> -->
+                        <option value="starters">Starters</option>
+                        <option value="mainCourse">Main course</option>
+                        <option value="desserts">Desserts</option>
+                    </select><br><br>
+                    <label for="imageurl">Photo URL:</label>
+                    <input type="text" id="imageurl" name="imageurl"><br><br>
+                    <button type="submit" class="btn-primary" id="addMenuSubmit">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="closeAddMenubtn" class="btn btn-secondary">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./script.js" defer></script>
+</body>
 </html>
