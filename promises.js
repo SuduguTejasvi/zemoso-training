@@ -171,4 +171,63 @@ function fetchUser(userId) {
   
   // Usage: Call the async function to fetch user details, posts, and comments
   fetchUserDetails(1);
+
+const promise1=new Promise((resolve,reject)=>{setTimeout(()=>{resolve("Promise 1 successfully executed")}),5000});
+// const promsise2=new Promise((resolve,reject)=>{setTimeout(()=>{resolve("Promise 2 successfully executed")},1000)});
+const promise2=Promise.reject("Promise 2 failed");
+
+Promise.allSettled([promise1,promise2]).then(msg=>{
+    console.log(msg);
+}).catch(err=>{
+    console.log(err);
+});
+
+const promise1=new Promise((resolve,reject)=>{setTimeout(()=>{resolve("Promise 1 successfull")},9000)});
+const promise2=new Promise((resolve,reject)=>{setTimeout(()=>{reject("Promise 2 failed")},1000)});
+
+Promise.any([promise1,promise2]).then(msg=>{
+    console.log(msg);
+}).catch(err=>{
+    console.log(err);
+})
+
+
+const promise1=new Promise((resolve,reject)=>setTimeout(()=>{resolve("Promise1 executed")},2000));
+const promise2=Promise.reject("Promise 2 is failed");
+
+Promise.all([promise1,promise2]).then(msg=>{
+    console.log(msg);
+}).catch(err=>{
+    console.log(err);
+})
+
+const promise1=new Promise((resolve,reject)=>{setTimeout(()=>{resolve("Promise 1 completed")},2000)});
+// const promise2=new Promise((resolve,reject)=>{setTimeout(()=>{resolve("Promise 2 resolved")},2000)});
+const promise2=Promise.reject("Promise 2 failed");
+
+Promise.allSettled([promise1,promise2]).then(msg=>{
+    console.log(msg);
+}).catch(err=>{
+    console.log(err);
+})
+
+const promise1=new Promise((resolve,reject)=>{ setTimeout(()=>{resolve("Promise 1 successfull")},9000)})
+const promise2=new Promise((resolve,reject)=>{ setTimeout(()=>{reject("Promise 2 Rejected")},1000)})
+// const promise3=Promise.reject("Promsie 3 failed")
+
+Promise.any([promise1,promise2]).then(msg=>{
+    console.log(msg);
+}).catch(err=>{
+    console.log(err);
+})
+
+const resolvePromise=Promise.resolve("Promise is resolved");
+resolvePromise.then(msg=>{
+    console.log(msg);
+})
+
+const rejectPromise=Promise.reject("Promise is rejected")
+rejectPromise.catch(err=>{
+    console.log(err);
+})
   
